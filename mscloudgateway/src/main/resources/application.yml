@@ -1,0 +1,36 @@
+spring:
+  #Define o nome do aplicativo para ser usado pelo Spring.
+  application:
+    name: mscloudgateway
+    #Define as configurações do Spring Cloud.
+  cloud:
+    #Especifica as configurações para o Spring Cloud Gateway.
+    gateway:
+      #Ativa a integração com o servidor de descoberta do Eureka.
+      discovery:
+        #Define as opções de localização do serviço.
+        locator:
+          #Habilita a descoberta de serviços.
+          enable: true
+          #Define se o ID do serviço deve ser transformado em minúsculas.
+          lower-case-service-id: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/realms/mscourserealm
+#Define as configurações do servidor, nesse caso,
+#especifica que ele deve ser executado na porta 8080.
+server:
+  port: 8080
+
+#Especifica as configurações do cliente Eureka.
+eureka:
+  client:
+    #Habilita a recuperação do registro de serviços do servidor Eureka.
+    fetch-registry: true
+    #Habilita o registro do próprio serviço com o servidor Eureka.
+    register-with-eureka: true
+    # Especifica a URL do servidor Eureka.
+    service-url:
+      defaultZone: http://localhost:8761/eureka

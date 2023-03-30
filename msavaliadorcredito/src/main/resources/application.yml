@@ -1,0 +1,29 @@
+# Definindo nome da aplicacao
+spring:
+  application:
+    name: msavaliadorcredito
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+
+# Se colocou 0 o spring boot vai escolher uma porta aleatoria
+server:
+  port: 0
+
+# Definindo a URL que o cliente vai utilizar pra se conectar, que � a 8761
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+  instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+
+mq:
+  queues:
+    emissao-cartoes: emissao-cartoes
+

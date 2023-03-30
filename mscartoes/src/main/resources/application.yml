@@ -1,0 +1,29 @@
+# Definindo nome da aplicacao
+spring:
+  application:
+    name: mscartoes
+  # Configurações para o RabbitMQ
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+  # Configurações para o servidor embutido
+server:
+    port: 0
+
+  # Configurações para o Eureka
+eureka:
+    client:
+      service-url:
+        defaultZone: http://localhost:8761/eureka
+    instance:
+      instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+  # Configurações para as filas do RabbitMQ
+mq:
+ queues:
+   emissao-cartoes: emissao-cartoes
+
+
